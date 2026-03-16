@@ -1,6 +1,5 @@
 using System.Net;
 using System.Net.Http.Json;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Shouldly;
 using SkynetBooking.Application.Bookings.Commands;
@@ -10,37 +9,30 @@ using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-/* SPEAKER NOTES (Before):
-- Boiler plate difference with after - functionally equivalent
-- Performance - when suites get big.
+/* SPEAKER NOTES:
+- Extract WAF and create fixture - Talk through
+- Performance improvement - API takes a while to spin up.
+- Central place to manage database resetting.
+- Base class
+  - For now:
+    - ensures database is reset before each test.
+    - HttpClient provided
+  - More coming...
+- Note: test is still quite verbose - will fix this...
 */
 
-public class Example3_Before
+[Collection(CustomWebApplicationCollection.Name)]
+public class Example4_Before : TestBase
 {
+    public Example4_Before(CustomWebApplicationFixture fixture) : base(fixture) { }
+
     [Fact]
     public async Task Should_Return400_When_EndIsBeforeStart()
     {
-        // Boilder plate
-        var factory = new CustomWebApplicationFactory();
-
-        // Boilder plate
-        using (var scope = factory.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
-            context.Database.EnsureDeleted();
-            context.Database.Migrate();
-        }
-
-        // Boilder plate
-        await factory.ResetState();
-
-        // Boilder plate
-        var client = factory.CreateClient();
-
         int aiCustomerId;
         int humanResourceId;
 
-        using (var scope = factory.Services.CreateScope())
+        using (var scope = Factory.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
@@ -63,7 +55,7 @@ public class Example3_Before
             End = start.AddHours(-1)
         };
 
-        var response = await client.PostAsJsonAsync("api/bookings", request);
+        var response = await HttpClient.PostAsJsonAsync("api/bookings", request);
 
         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
     }
