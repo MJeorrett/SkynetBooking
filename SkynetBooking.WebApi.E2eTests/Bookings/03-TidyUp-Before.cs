@@ -11,9 +11,8 @@ using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
 /* SPEAKER NOTES (Before):
-- No shared fixture or collection; no TestBase.
-- Each test (or class) is responsible for creating the factory, ensuring DB, resetting state, and creating the client.
-- Verbose and repetitive.
+- Boiler plate difference with after - functionally equivalent
+- Performance - when suites get big.
 */
 
 public class Example3_Before
@@ -21,8 +20,10 @@ public class Example3_Before
     [Fact]
     public async Task Should_Return400_When_EndIsBeforeStart()
     {
+        // Boilder plate
         var factory = new CustomWebApplicationFactory();
 
+        // Boilder plate
         using (var scope = factory.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
@@ -30,8 +31,10 @@ public class Example3_Before
             context.Database.Migrate();
         }
 
+        // Boilder plate
         await factory.ResetState();
 
+        // Boilder plate
         var client = factory.CreateClient();
 
         int aiCustomerId;

@@ -18,7 +18,7 @@ namespace SkynetBooking.WebApi.E2eTests.Bookings;
     - ensures database is reset before each test.
     - HttpClient provided
   - More coming...
-- Note: test is still quite verbose
+- Note: test is still quite verbose - will fix this...
 */
 
 [Collection(CustomWebApplicationCollection.Name)]
