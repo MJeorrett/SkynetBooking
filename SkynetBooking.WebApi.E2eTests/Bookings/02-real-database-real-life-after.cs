@@ -10,10 +10,6 @@
 
 // namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-// /* SPEAKER NOTES:
-// - Now we have a lot of code to set up - well fix that later.
-// */
-
 // public class Example2_After
 // {
 //     [Fact]

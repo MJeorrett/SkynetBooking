@@ -7,10 +7,6 @@ using SkynetBooking.Application.Bookings.Commands;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-/* SPEAKER NOTES:
-- Spot what is unusal with the below test...
-*/
-
 public class Example2_Before
 {
     [Fact]
