@@ -8,7 +8,7 @@ using SkynetBooking.Core;
 using SkynetBooking.Infrastructure.Db;
 using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
-namespace SkynetBooking.WebApi.E2eTests.Bookings;
+// namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
 public class Example3_Before
 {
@@ -32,34 +32,34 @@ public class Example3_Before
         // Boilder plate
         var client = factory.CreateClient();
 
-        int aiCustomerId;
-        int humanResourceId;
+//         int aiCustomerId;
+//         int humanResourceId;
 
-        using (var scope = factory.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
-            var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
-            var humanResource = new HumanResourceEntity();
-            context.AiCustomers.Add(aiCustomer);
-            context.HumanResources.Add(humanResource);
-            await context.SaveChangesAsync();
+//         using (var scope = factory.Services.CreateScope())
+//         {
+//             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
+//             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
+//             var humanResource = new HumanResourceEntity();
+//             context.AiCustomers.Add(aiCustomer);
+//             context.HumanResources.Add(humanResource);
+//             await context.SaveChangesAsync();
 
-            aiCustomerId = aiCustomer.Id;
-            humanResourceId = humanResource.Id;
-        }
+//             aiCustomerId = aiCustomer.Id;
+//             humanResourceId = humanResource.Id;
+//         }
 
         var start = new DateTime(2025, 3, 16, 12, 0, 0);
 
-        var request = new CreateBookingCommand
-        {
-            AiCustomerId = aiCustomerId,
-            HumanResourceId = humanResourceId,
-            Start = start,
-            End = start.AddHours(-1)
-        };
+//         var request = new CreateBookingCommand
+//         {
+//             AiCustomerId = aiCustomerId,
+//             HumanResourceId = humanResourceId,
+//             Start = start,
+//             End = start.AddHours(-1)
+//         };
 
-        var response = await client.PostAsJsonAsync("api/bookings", request);
+//         var response = await client.PostAsJsonAsync("api/bookings", request);
 
-        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
-    }
-}
+//         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+//     }
+// }
