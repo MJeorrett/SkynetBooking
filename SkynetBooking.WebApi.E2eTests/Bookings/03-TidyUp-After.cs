@@ -22,9 +22,9 @@ namespace SkynetBooking.WebApi.E2eTests.Bookings;
 */
 
 [Collection(CustomWebApplicationCollection.Name)]
-public class Example3 : TestBase
+public class Example3_After : TestBase
 {
-    public Example3(CustomWebApplicationFixture fixture) : base(fixture) { }
+    public Example3_After(CustomWebApplicationFixture fixture) : base(fixture) { }
 
     [Fact]
     public async Task Should_Return400_When_EndIsBeforeStart()
