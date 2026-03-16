@@ -11,7 +11,16 @@ using SkynetBooking.Infrastructure.Db;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-public class CreateBookingE2eTests
+/* SPEAKER NOTES:
+- Show unit test - passes
+- Run API and make bad request - breaks
+- Show e2e test broken
+- Fix
+- Show unit and E2e tests passing
+- Fairly trivial example but lots of ways that integration can break.
+*/
+
+public class Example1
 {
     [Fact]
     public async Task Should_Return400_When_EndIsBeforeStart()
