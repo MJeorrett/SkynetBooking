@@ -1,0 +1,41 @@
+---
+description: E2E test project DTO conventions – declare locally, use nullable properties
+globs: **/E2eBooking.WebApi.E2eTests/**/*.cs
+alwaysApply: false
+---
+
+# E2E Test Project DTOs
+
+## Isolation from SUT
+
+- **Declare DTOs in the E2E project only.** Do not import request/response DTOs from the Application or WebApi (SUT) projects.
+- Place DTOs under `E2eBooking.WebApi.E2eTests/Shared/Dtos/`, grouped by feature (e.g. `Shared/Dtos/Bookings/`).
+- Endpoints and tests should reference these local DTOs so the E2E suite stays independent of SUT internals.
+
+## Nullable properties
+
+- E2E DTOs should **generally use nullable properties** (e.g. `int?`, `DateTime?`, `string?`) so tests can omit or partially set payloads and assert API validation/behavior.
+
+```csharp
+// ✅ GOOD – DTO in E2E project with nullable properties
+namespace E2eBooking.WebApi.E2eTests.Shared.Dtos.Bookings;
+
+public record CreateBookingRequestDto
+{
+    public int? AiCustomerId { get; set; }
+    public int? HumanResourceId { get; set; }
+    public DateTime? Start { get; set; }
+    public DateTime? End { get; set; }
+}
+```
+
+```csharp
+// ❌ BAD – importing SUT DTO
+using E2eBooking.Application.Bookings.Dtos;
+```
+
+```csharp
+// ❌ BAD – non-nullable only when partial payloads are needed
+public int AiCustomerId { get; set; }
+public DateTime Start { get; set; }
+```

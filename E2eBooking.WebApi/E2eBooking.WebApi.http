@@ -1,6 +1,0 @@
-@E2eBooking.WebApi_HostAddress = http://localhost:5139
-
-GET {{E2eBooking.WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

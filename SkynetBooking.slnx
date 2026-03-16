@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="scripts/AddMigration.ps1" />
+    <File Path="scripts/ApplyMigrations.ps1" />
+  </Folder>
+  <Folder Name="/Solution Items/Scripts/">
+    <File Path="scripts/AddMigration.ps1" />
+    <File Path="scripts/ApplyMigrations.ps1" />
+  </Folder>
+  <Project Path="SkynetBooking.Application/SkynetBooking.Application.csproj" />
+  <Project Path="SkynetBooking.Application.UnitTests/SkynetBooking.Application.UnitTests.csproj" />
+  <Project Path="SkynetBooking.Core/SkynetBooking.Core.csproj" />
+  <Project Path="SkynetBooking.Infrastructure/SkynetBooking.Infrastructure.csproj" />
+  <Project Path="SkynetBooking.WebApi.E2eTests/SkynetBooking.WebApi.E2eTests.csproj" />
+  <Project Path="SkynetBooking.WebApi/SkynetBooking.WebApi.csproj" />
+</Solution>

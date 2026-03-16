@@ -1,0 +1,2 @@
+$MigrationName = Read-Host -Prompt "Please enter the name of the migration to create"
+dotnet ef migrations add $MigrationName --startup-project ./SkynetBooking.WebApi --project SkynetBooking.Infrastructure

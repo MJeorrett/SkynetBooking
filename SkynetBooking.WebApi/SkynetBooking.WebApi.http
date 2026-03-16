@@ -1,0 +1,28 @@
+@Skynet.WebApi_HostAddress = http://localhost:5139
+
+POST {{Skynet.WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Accept: application/json
+
+{
+  "aiCustomerId": 1,
+  "humanResourceId": 1,
+  "start": "2025-04-17T09:00:00Z",
+  "end": "2025-04-17T11:00:00Z"
+}
+
+###
+
+# Bad example: start is after end (should return validation error)
+POST {{Skynet.WebApi_HostAddress}}/api/bookings
+Content-Type: application/json
+Accept: application/json
+
+{
+  "aiCustomerId": 1,
+  "humanResourceId": 1,
+  "start": "2025-04-17T14:00:00Z",
+  "end": "2025-04-17T11:00:00Z"
+}
+
+###
