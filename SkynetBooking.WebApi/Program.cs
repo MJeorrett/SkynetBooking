@@ -5,7 +5,7 @@ using SkynetBooking.Infrastructure.Db;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration, builder.Environment.EnvironmentName);
 
 // Add services to the container.
 builder.Services.AddControllers();
