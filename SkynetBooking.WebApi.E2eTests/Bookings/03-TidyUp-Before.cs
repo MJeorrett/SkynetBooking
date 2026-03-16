@@ -10,11 +10,6 @@ using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-/* SPEAKER NOTES (Before):
-- Boiler plate difference with after - functionally equivalent
-- Performance - when suites get big.
-*/
-
 public class Example3_Before
 {
     [Fact]

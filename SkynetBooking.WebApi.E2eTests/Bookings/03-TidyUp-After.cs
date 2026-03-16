@@ -9,18 +9,6 @@ using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-/* SPEAKER NOTES:
-- Extract WAF and create fixture - Talk through
-- Performance improvement - API takes a while to spin up.
-- Central place to manage database resetting.
-- Base class
-  - For now:
-    - ensures database is reset before each test.
-    - HttpClient provided
-  - More coming...
-- Note: test is still quite verbose - will fix this...
-*/
-
 [Collection(CustomWebApplicationCollection.Name)]
 public class Example3_After : TestBase
 {
