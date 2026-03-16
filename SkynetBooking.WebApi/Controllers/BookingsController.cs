@@ -11,10 +11,11 @@ public class BookingsController
     [HttpPost("api/bookings")]
     public async Task<ActionResult<AppResponse<int>>> CreateBooking(
         [FromBody] CreateBookingCommand command,
+        [FromServices] CreateBookingCommandValidator validator,
         [FromServices] CreateBookingCommandHandler handler,
         CancellationToken cancellationToken)
     {
-        var response = await handler.Handle(command, cancellationToken);
+        var response = await handler.Handle(command, validator, cancellationToken);
 
         return response.ToActionResult();
     }

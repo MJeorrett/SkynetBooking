@@ -11,18 +11,13 @@
 // namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
 // /* SPEAKER NOTES:
-// - Show unit test - passes
-// - Run API and make bad request - breaks
-// - Show e2e test broken
-// - Fix
-// - Show unit and E2e tests passing
-// - Fairly trivial example but lots of ways that integration can break.
+// - Now we have a lot of code to set up - well fix that later.
 // */
 
-// public class Example1
+// public class Example2_After
 // {
 //     [Fact]
-//     public async Task Should_Return400_When_EndIsBeforeStart()
+//     public async Task Should_Return200_When_EndIsAfterStart()
 //     {
 //         await using var factory = new WebApplicationFactory<Program>()
 //             .WithWebHostBuilder(builder =>
@@ -55,11 +50,11 @@
 //             AiCustomerId = aiCustomerId,
 //             HumanResourceId = humanResourceId,
 //             Start = start,
-//             End = start.AddHours(-1)
+//             End = start.AddHours(1)
 //         };
 
 //         var response = await client.PostAsJsonAsync("api/bookings", request);
 
-//         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+//         response.StatusCode.ShouldBe(HttpStatusCode.Created);
 //     }
 // }
