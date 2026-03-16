@@ -10,15 +10,6 @@
 
 // namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-// /* SPEAKER NOTES:
-// - Show unit test - passes
-// - Run API and make bad request - breaks
-// - Show e2e test broken
-// - Fix
-// - Show unit and E2e tests passing
-// - Fairly trivial example but lots of ways that integration can break.
-// */
-
 // public class Example1
 // {
 //     [Fact]
