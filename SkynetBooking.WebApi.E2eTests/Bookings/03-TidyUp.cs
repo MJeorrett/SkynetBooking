@@ -1,40 +1,38 @@
 using System.Net;
 using System.Net.Http.Json;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Shouldly;
 using SkynetBooking.Application.Bookings.Commands;
 using SkynetBooking.Core;
 using SkynetBooking.Infrastructure.Db;
+using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
 namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
 /* SPEAKER NOTES:
-- Show unit test - passes
-- Run API and make bad request - breaks
-- Show e2e test broken
-- Fix
-- Show unit and E2e tests passing
-- Fairly trivial example but lots of ways that integration can break.
+- Extract WAF and create fixture - Talk through
+- Performance improvement - API takes a while to spin up.
+- Central place to manage database resetting.
+- Base class
+  - For now:
+    - ensures database is reset before each test.
+    - HttpClient provided
+  - More coming...
+- Note: test is still quite verbose
 */
 
-public class Example1
+[Collection(CustomWebApplicationCollection.Name)]
+public class Example3 : TestBase
 {
+    public Example3(CustomWebApplicationFixture fixture) : base(fixture) { }
+
     [Fact]
     public async Task Should_Return400_When_EndIsBeforeStart()
     {
-        await using var factory = new WebApplicationFactory<Program>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.UseEnvironment(Environments.Development);
-            });
-
         int aiCustomerId;
         int humanResourceId;
 
-        using (var scope = factory.Services.CreateScope())
+        using (var scope = Factory.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
@@ -47,8 +45,6 @@ public class Example1
             humanResourceId = humanResource.Id;
         }
 
-        using var client = factory.CreateClient();
-
         var start = new DateTime(2025, 3, 16, 12, 0, 0);
 
         var request = new CreateBookingCommand
@@ -59,7 +55,7 @@ public class Example1
             End = start.AddHours(-1)
         };
 
-        var response = await client.PostAsJsonAsync("api/bookings", request);
+        var response = await HttpClient.PostAsJsonAsync("api/bookings", request);
 
         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
     }
