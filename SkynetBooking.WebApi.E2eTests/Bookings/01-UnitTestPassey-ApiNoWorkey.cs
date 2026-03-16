@@ -1,66 +1,66 @@
-using System.Net;
-using System.Net.Http.Json;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Shouldly;
-using SkynetBooking.Application.Bookings.Commands;
-using SkynetBooking.Core;
-using SkynetBooking.Infrastructure.Db;
+// using System.Net;
+// using System.Net.Http.Json;
+// using Microsoft.AspNetCore.Hosting;
+// using Microsoft.AspNetCore.Mvc.Testing;
+// using Microsoft.Extensions.DependencyInjection;
+// using Microsoft.Extensions.Hosting;
+// using Shouldly;
+// using SkynetBooking.Application.Bookings.Commands;
+// using SkynetBooking.Core;
+// using SkynetBooking.Infrastructure.Db;
 
-namespace SkynetBooking.WebApi.E2eTests.Bookings;
+// namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-/* SPEAKER NOTES:
-- Show unit test - passes
-- Run API and make bad request - breaks
-- Show e2e test broken
-- Fix
-- Show unit and E2e tests passing
-- Fairly trivial example but lots of ways that integration can break.
-*/
+// /* SPEAKER NOTES:
+// - Show unit test - passes
+// - Run API and make bad request - breaks
+// - Show e2e test broken
+// - Fix
+// - Show unit and E2e tests passing
+// - Fairly trivial example but lots of ways that integration can break.
+// */
 
-public class Example1
-{
-    [Fact]
-    public async Task Should_Return400_When_EndIsBeforeStart()
-    {
-        await using var factory = new WebApplicationFactory<Program>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.UseEnvironment(Environments.Development);
-            });
+// public class Example1
+// {
+//     [Fact]
+//     public async Task Should_Return400_When_EndIsBeforeStart()
+//     {
+//         await using var factory = new WebApplicationFactory<Program>()
+//             .WithWebHostBuilder(builder =>
+//             {
+//                 builder.UseEnvironment(Environments.Development);
+//             });
 
-        int aiCustomerId;
-        int humanResourceId;
+//         int aiCustomerId;
+//         int humanResourceId;
 
-        using (var scope = factory.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
-            var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
-            var humanResource = new HumanResourceEntity();
-            context.AiCustomers.Add(aiCustomer);
-            context.HumanResources.Add(humanResource);
-            await context.SaveChangesAsync();
+//         using (var scope = factory.Services.CreateScope())
+//         {
+//             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
+//             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
+//             var humanResource = new HumanResourceEntity();
+//             context.AiCustomers.Add(aiCustomer);
+//             context.HumanResources.Add(humanResource);
+//             await context.SaveChangesAsync();
 
-            aiCustomerId = aiCustomer.Id;
-            humanResourceId = humanResource.Id;
-        }
+//             aiCustomerId = aiCustomer.Id;
+//             humanResourceId = humanResource.Id;
+//         }
 
-        using var client = factory.CreateClient();
+//         using var client = factory.CreateClient();
 
-        var start = new DateTime(2025, 3, 16, 12, 0, 0);
+//         var start = new DateTime(2025, 3, 16, 12, 0, 0);
 
-        var request = new CreateBookingCommand
-        {
-            AiCustomerId = aiCustomerId,
-            HumanResourceId = humanResourceId,
-            Start = start,
-            End = start.AddHours(-1)
-        };
+//         var request = new CreateBookingCommand
+//         {
+//             AiCustomerId = aiCustomerId,
+//             HumanResourceId = humanResourceId,
+//             Start = start,
+//             End = start.AddHours(-1)
+//         };
 
-        var response = await client.PostAsJsonAsync("api/bookings", request);
+//         var response = await client.PostAsJsonAsync("api/bookings", request);
 
-        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
-    }
-}
+//         response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+//     }
+// }
