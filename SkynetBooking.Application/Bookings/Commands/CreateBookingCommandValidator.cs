@@ -8,6 +8,6 @@ public class CreateBookingCommandValidator : AbstractValidator<CreateBookingComm
     {
         RuleFor(x => x.End)
             .GreaterThan(x => x.Start)
-            .WithMessage("Start must be before or equal to end.");
+            .WithMessage("Start must be before end.");
     }
 }
