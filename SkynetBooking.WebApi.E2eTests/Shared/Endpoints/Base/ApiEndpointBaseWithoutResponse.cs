@@ -23,7 +23,7 @@ internal abstract class ApiEndpointBaseWithoutResponse
     }
 }
 
-internal abstract class ApiEndpointBaseWithoutResponse<TDto>
+internal abstract class ApiEndpointBaseWithoutResponse<TReq>
 {
     protected readonly HttpClient HttpClient;
 
@@ -32,9 +32,9 @@ internal abstract class ApiEndpointBaseWithoutResponse<TDto>
         HttpClient = httpClient;
     }
 
-    public abstract Task<HttpResponseMessage> Call(TDto dto);
+    public abstract Task<HttpResponseMessage> Call(TReq dto);
 
-    public async Task CallAndEnsureSuccess(TDto dto)
+    public async Task CallAndEnsureSuccess(TReq dto)
     {
         var response = await Call(dto);
         await response.ShouldHaveSuccessStatusCode();
