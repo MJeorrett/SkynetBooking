@@ -1,16 +1,16 @@
-//using System.Net;
-//using Microsoft.EntityFrameworkCore;
-//using Shouldly;
-//using SkynetBooking.Core;
-//using SkynetBooking.WebApi.E2eTests.Shared.Dtos.Bookings;
-//using SkynetBooking.WebApi.E2eTests.Shared.Endpoints;
-//using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
+// using System.Net;
+// using Microsoft.EntityFrameworkCore;
+// using Shouldly;
+// using SkynetBooking.Core;
+// using SkynetBooking.WebApi.E2eTests.Shared.Dtos.Bookings;
+// using SkynetBooking.WebApi.E2eTests.Shared.Endpoints;
+// using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
-//namespace SkynetBooking.WebApi.E2eTests.Bookings;
+// namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-//[Collection(CustomWebApplicationCollection.Name)]
-//public class Example4_CreateBooking : TestBase
-//{
+// [Collection(CustomWebApplicationCollection.Name)]
+// public class Example4_CreateBooking : TestBase
+// {
 //    public Example4_CreateBooking(CustomWebApplicationFixture fixture) : base(fixture) { }
 
 //    [Fact]
@@ -32,8 +32,8 @@
 //        {
 //            AiCustomerId = aiCustomer.Id,
 //            HumanResourceId = humanResourceId,
-//            Start = DateTime.UtcNow.Date.AddHours(10),
-//            End = DateTime.UtcNow.Date.AddHours(11),
+//            Start = new DateTime(2027, 3, 17, 10, 0, 0),
+//            End = new DateTime(2027, 3, 17, 11, 0, 0),
 //        };
 
 //        var response = await HttpClient.CreateBooking().Call(createRequest);
@@ -62,13 +62,13 @@
 //        {
 //            AiCustomerId = aiCustomer.Id,
 //            HumanResourceId = humanResource.Id,
-//            Start = DateTime.UtcNow.Date.AddHours(10),
-//            End = DateTime.UtcNow.Date.AddHours(11),
+//            Start = new DateTime(2027, 3, 17, 10, 0, 0),
+//            End = new DateTime(2027, 3, 17, 11, 0, 0),
 //        };
 
-//        var bookingId = await HttpClient.CreateBooking().CallAndParseResponse(createRequest);
+//        var response = await HttpClient.CreateBooking().Call(createRequest);
 
-//        bookingId.ShouldBeGreaterThan(0);
+//        response.StatusCode.ShouldBe(HttpStatusCode.Created);
 //    }
 
 //    [Fact]
@@ -81,12 +81,12 @@
 //        {
 //            AiCustomerId = aiCustomerId,
 //            HumanResourceId = humanResourceId,
-//            Start = DateTime.UtcNow.Date.AddHours(10),
-//            End = DateTime.UtcNow.Date.AddHours(11),
+//            Start = new DateTime(2027, 3, 17, 10, 0, 0),
+//            End = new DateTime(2027, 3, 17, 11, 0, 0),
 //        };
 
-//        var bookingId = await HttpClient.CreateBooking().CallAndParseResponse(createRequest);
+//        var response = await HttpClient.CreateBooking().Call(createRequest);
 
-//        bookingId.ShouldBeGreaterThan(0);
+//        response.StatusCode.ShouldBe(HttpStatusCode.Created);
 //    }
-//}
+// }
