@@ -8,6 +8,7 @@
     <File Path="scripts/AddMigration.ps1" />
     <File Path="scripts/ApplyMigrations.ps1" />
   </Folder>
+  <Project Path="SkynetBooking.Application.UnitTests/SkynetBooking.Application.UnitTests.csproj" />
   <Project Path="SkynetBooking.Application/SkynetBooking.Application.csproj" />
   <Project Path="SkynetBooking.Core/SkynetBooking.Core.csproj" />
   <Project Path="SkynetBooking.Infrastructure/SkynetBooking.Infrastructure.csproj" />
