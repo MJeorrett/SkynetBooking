@@ -1,5 +1,10 @@
 @Skynet.WebApi_HostAddress = http://localhost:5139
 
+GET {{Skynet.WebApi_HostAddress}}/swagger/v1/swagger.json
+Accept: application/json
+
+###
+
 POST {{Skynet.WebApi_HostAddress}}/api/bookings
 Content-Type: application/json
 Accept: application/json
