@@ -34,9 +34,9 @@ public static class DataSeeder
 
         var humanResources = new[]
         {
-            new HumanResourceEntity(),
-            new HumanResourceEntity(),
-            new HumanResourceEntity(),
+            new HumanResourceEntity() { NonUniqueIdentifier = "Sarah Royston", MaxPayloadKg = 92 },
+            new HumanResourceEntity() { NonUniqueIdentifier = "Chris Mitchel", MaxPayloadKg = 87 },
+            new HumanResourceEntity() { NonUniqueIdentifier = "Big Mike", MaxPayloadKg = 120 },
         };
 
         context.HumanResources.AddRange(humanResources);

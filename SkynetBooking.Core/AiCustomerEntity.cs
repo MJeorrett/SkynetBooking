@@ -1,4 +1,4 @@
-﻿namespace SkynetBooking.Core;
+namespace SkynetBooking.Core;
 
 public class AiCustomerEntity : IEntityBase
 {
