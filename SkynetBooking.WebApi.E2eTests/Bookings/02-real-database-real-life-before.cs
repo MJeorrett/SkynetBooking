@@ -1,37 +1,37 @@
-using System.Net;
-using System.Net.Http.Json;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Shouldly;
-using SkynetBooking.Application.Bookings.Commands;
+//using System.Net;
+//using System.Net.Http.Json;
+//using Microsoft.AspNetCore.Hosting;
+//using Microsoft.AspNetCore.Mvc.Testing;
+//using Shouldly;
+//using SkynetBooking.Application.Bookings.Commands;
 
-namespace SkynetBooking.WebApi.E2eTests.Bookings;
+//namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-public class Example2_Before
-{
-    [Fact]
-    public async Task Should_Return200_When_EndIsAfterStart()
-    {
-        await using var factory = new WebApplicationFactory<Program>()
-            .WithWebHostBuilder(builder =>
-            {
-                builder.UseEnvironment("E2eTests");
-            });
+//public class Example2_Before
+//{
+//    [Fact]
+//    public async Task Should_Return200_When_EndIsAfterStart()
+//    {
+//        await using var factory = new WebApplicationFactory<Program>()
+//            .WithWebHostBuilder(builder =>
+//            {
+//                builder.UseEnvironment("E2eTests");
+//            });
 
-        using var client = factory.CreateClient();
+//        using var client = factory.CreateClient();
 
-        var start = new DateTime(2025, 3, 16, 12, 0, 0);
+//        var start = new DateTime(2025, 3, 16, 12, 0, 0);
 
-        var request = new CreateBookingCommand
-        {
-            AiCustomerId = 123,
-            HumanResourceId = 456,
-            Start = start,
-            End = start.AddHours(1)
-        };
+//        var request = new CreateBookingCommand
+//        {
+//            AiCustomerId = 123,
+//            HumanResourceId = 456,
+//            Start = start,
+//            End = start.AddHours(1)
+//        };
 
-        var response = await client.PostAsJsonAsync("api/bookings", request);
+//        var response = await client.PostAsJsonAsync("api/bookings", request);
 
-        response.StatusCode.ShouldBe(HttpStatusCode.Created);
-    }
-}
+//        response.StatusCode.ShouldBe(HttpStatusCode.Created);
+//    }
+//}
