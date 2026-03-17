@@ -23,12 +23,19 @@ if (app.Environment.IsDevelopment())
     await DataSeeder.SeedAsync(context);
 }
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Intentionally break Swagger JSON generation (for E2E test demo).
+app.Use((context, next) =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    if (context.Request.Path.Equals("/swagger/v1/swagger.json", StringComparison.OrdinalIgnoreCase))
+    {
+        throw new InvalidOperationException("All your Swaggers are belong to us.");
+    }
+
+    return next();
+});
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
