@@ -1,24 +1,23 @@
-//using System.Net;
-//using System.Net.Http.Json;
-//using Microsoft.EntityFrameworkCore;
-//using Microsoft.Extensions.DependencyInjection;
-//using Shouldly;
-//using SkynetBooking.Application.Bookings.Commands;
-//using SkynetBooking.Core;
-//using SkynetBooking.Infrastructure.Db;
-//using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
+// using System.Net;
+// using System.Net.Http.Json;
+// using Microsoft.EntityFrameworkCore;
+// using Microsoft.Extensions.DependencyInjection;
+// using Shouldly;
+// using SkynetBooking.Application.Bookings.Commands;
+// using SkynetBooking.Core;
+// using SkynetBooking.Infrastructure.Db;
+// using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
-//namespace SkynetBooking.WebApi.E2eTests.Bookings;
+// namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-//public class Example3_Before
-//{
+// public class Example3_Before
+// {
 //    [Fact]
 //    public async Task Should_Return400_When_EndIsBeforeStart()
 //    {
-//        // Boiler plate
+//        // BEGIN Boiler plate
 //        var factory = new CustomWebApplicationFactory();
 
-//        // Boiler plate
 //        using (var scope = factory.Services.CreateScope())
 //        {
 //            var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
@@ -26,11 +25,10 @@
 //            context.Database.Migrate();
 //        }
 
-//        // Boiler plate
 //        await factory.ResetState();
 
-//        // Boiler plate
 //        var client = factory.CreateClient();
+//        // END Boiler plate
 
 //        int aiCustomerId;
 //        int humanResourceId;
@@ -62,4 +60,4 @@
 
 //        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
 //    }
-//}
+// }

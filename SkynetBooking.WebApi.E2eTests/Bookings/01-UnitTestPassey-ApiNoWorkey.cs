@@ -27,7 +27,7 @@
 //         using (var scope = factory.Services.CreateScope())
 //         {
 //             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
-//             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
+//             var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer", SerialNumber = "abc123" };
 //             var humanResource = new HumanResourceEntity();
 //             context.AiCustomers.Add(aiCustomer);
 //             context.HumanResources.Add(humanResource);

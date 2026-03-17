@@ -20,6 +20,10 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
             ?? throw new InvalidOperationException("Connection string 'SqlServer' is not configured.");
 
         await ResetDatabaseAsync(connectionString);
+
+         using var scope = Services.CreateScope();
+        var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
+        await DataSeeder.SeedAsync(context);
     }
 
     private async Task ResetDatabaseAsync(string connectionString)

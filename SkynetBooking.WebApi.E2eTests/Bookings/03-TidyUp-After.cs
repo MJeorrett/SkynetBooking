@@ -1,17 +1,17 @@
-//using System.Net;
-//using System.Net.Http.Json;
-//using Microsoft.Extensions.DependencyInjection;
-//using Shouldly;
-//using SkynetBooking.Application.Bookings.Commands;
-//using SkynetBooking.Core;
-//using SkynetBooking.Infrastructure.Db;
-//using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
+// using System.Net;
+// using System.Net.Http.Json;
+// using Microsoft.Extensions.DependencyInjection;
+// using Shouldly;
+// using SkynetBooking.Application.Bookings.Commands;
+// using SkynetBooking.Core;
+// using SkynetBooking.Infrastructure.Db;
+// using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
-//namespace SkynetBooking.WebApi.E2eTests.Bookings;
+// namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-//[Collection(CustomWebApplicationCollection.Name)]
-//public class Example3_After : TestBase
-//{
+// [Collection(CustomWebApplicationCollection.Name)]
+// public class Example3_After : TestBase
+// {
 //    public Example3_After(CustomWebApplicationFixture fixture) : base(fixture) { }
 
 //    [Fact]
@@ -47,4 +47,4 @@
 
 //        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
 //    }
-//}
+// }

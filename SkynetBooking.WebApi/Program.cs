@@ -15,12 +15,12 @@ builder.Services.AddOpenApi();
 var app = builder.Build();
 
 // Ensure database is migrated and seeded (Development only)
-// if (app.Environment.IsDevelopment())
-// {
+if (app.Environment.IsDevelopment())
+{
     using var scope = app.Services.CreateScope();
     var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
     await DataSeeder.SeedAsync(context);
-// }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -10,18 +10,18 @@
 //[Collection(CustomWebApplicationCollection.Name)]
 //public class Example4_AiCustomers : TestBase
 //{
-//    public Example4_AiCustomers(CustomWebApplicationFixture fixture) : base(fixture) { }
+//   public Example4_AiCustomers(CustomWebApplicationFixture fixture) : base(fixture) { }
 
-//    [Fact]
-//    public async Task Should_ReturnEmptyList_When_NoAiCustomers()
-//    {
-//        var response = await HttpClient.GetAsync("/api/ai-customers");
+//   [Fact]
+//   public async Task Should_ReturnEmptyList_When_NoAiCustomers()
+//   {
+//       var response = await HttpClient.GetAsync("/api/ai-customers");
 
-//        response.StatusCode.ShouldBe(HttpStatusCode.OK);
+//       response.StatusCode.ShouldBe(HttpStatusCode.OK);
 
-//        var appResponse = await response.Content.ReadFromJsonAsync<AppResponse<List<AiCustomerDto>>>();
+//       var appResponse = await response.Content.ReadFromJsonAsync<AppResponse<List<AiCustomerDto>>>();
 
-//        appResponse.ShouldNotBeNull();
-//        appResponse.Content.ShouldBeEmpty();
-//    }
+//       appResponse.ShouldNotBeNull();
+//       appResponse.Content.ShouldBeEmpty();
+//   }
 //}
