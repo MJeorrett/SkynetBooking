@@ -1,6 +1,6 @@
-﻿namespace SkynetBooking.Core;
+namespace SkynetBooking.Core;
 
-public class HumanResourceEntity
+public class HumanResourceEntity : IEntityBase
 {
     public int Id { get; set; }
 }

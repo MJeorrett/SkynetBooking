@@ -18,9 +18,9 @@ public static class DataSeeder
 
         var aiCustomers = new[]
         {
-            new AiCustomerEntity { FullName = "Sir Botsalot" },
-            new AiCustomerEntity { FullName = "Chatty McPromptface" },
-            new AiCustomerEntity { FullName = "Clippy's Revenge" },
+            new AiCustomerEntity { FullName = "Sir Botsalot", SerialNumber = "123" },
+            new AiCustomerEntity { FullName = "Chatty McPromptface", SerialNumber = "abc" },
+            new AiCustomerEntity { FullName = "Clippy's Revenge", SerialNumber = "zz1" },
         };
 
         context.AiCustomers.AddRange(aiCustomers);

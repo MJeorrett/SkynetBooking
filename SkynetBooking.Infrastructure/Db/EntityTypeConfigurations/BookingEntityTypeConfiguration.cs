@@ -8,11 +8,6 @@ public class BookingEntityTypeConfiguration : IEntityTypeConfiguration<BookingEn
 {
     public void Configure(EntityTypeBuilder<BookingEntity> builder)
     {
-        builder.ToTable("Bookings", builder =>
-        {
-            builder.HasCheckConstraint(
-                "CK_Bookings_StartBeforeEnd",
-                "[Start] < [End]");
-        });
+        builder.ToTable("Bookings");
     }
 }

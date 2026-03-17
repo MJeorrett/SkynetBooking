@@ -1,4 +1,4 @@
-﻿using SkynetBooking.Application.Common.Interfaces;
+using SkynetBooking.Application.Common.Interfaces;
 using SkynetBooking.Core;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,5 +14,10 @@ public class SkynetDbContext : DbContext, ISkynetDbContext
 
     public SkynetDbContext(DbContextOptions<SkynetDbContext> options) : base(options)
     {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(SkynetDbContext).Assembly);
     }
 }
