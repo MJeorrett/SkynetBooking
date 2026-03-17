@@ -12,8 +12,8 @@ using SkynetBooking.Infrastructure.Db;
 namespace SkynetBooking.Infrastructure.Db.Migrations
 {
     [DbContext(typeof(SkynetDbContext))]
-    [Migration("20260317002509_AddAiCustomerSerialNumber")]
-    partial class AddAiCustomerSerialNumber
+    [Migration("20260317160015_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

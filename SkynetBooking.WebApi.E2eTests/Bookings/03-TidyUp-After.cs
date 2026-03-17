@@ -23,7 +23,7 @@ public class Example3_After : TestBase
         using (var scope = Factory.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
-            var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer" };
+            var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer", SerialNumber = "123abc" };
             var humanResource = new HumanResourceEntity();
             context.AiCustomers.Add(aiCustomer);
             context.HumanResources.Add(humanResource);

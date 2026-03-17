@@ -17,7 +17,8 @@ namespace SkynetBooking.Infrastructure.Db.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SerialNumber = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,6 +64,12 @@ namespace SkynetBooking.Infrastructure.Db.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AiCustomers_SerialNumber",
+                table: "AiCustomers",
+                column: "SerialNumber",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bookings_AiCustomerId",
