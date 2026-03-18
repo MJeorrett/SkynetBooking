@@ -1,17 +1,17 @@
-// using System.Net;
-// using System.Net.Http.Json;
-// using Microsoft.AspNetCore.Hosting;
-// using Microsoft.AspNetCore.Mvc.Testing;
-// using Microsoft.Extensions.DependencyInjection;
-// using Shouldly;
-// using SkynetBooking.Application.Bookings.Commands;
-// using SkynetBooking.Core;
-// using SkynetBooking.Infrastructure.Db;
+//using System.Net;
+//using System.Net.Http.Json;
+//using Microsoft.AspNetCore.Hosting;
+//using Microsoft.AspNetCore.Mvc.Testing;
+//using Microsoft.Extensions.DependencyInjection;
+//using Shouldly;
+//using SkynetBooking.Application.Bookings.Commands;
+//using SkynetBooking.Core;
+//using SkynetBooking.Infrastructure.Db;
 
-// namespace SkynetBooking.WebApi.E2eTests.Bookings;
+//namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-// public class Example2_After
-// {
+//public class Example2_After
+//{
 //    [Fact]
 //    public async Task Should_Return200_When_EndIsAfterStart()
 //    {
@@ -28,7 +28,7 @@
 //        {
 //            var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
 //            var aiCustomer = new AiCustomerEntity { FullName = "E2E Test Customer", SerialNumber = "abc123" };
-//            var humanResource = new HumanResourceEntity();
+//            var humanResource = new HumanResourceEntity() { MaxPayloadKg = 123, NonUniqueIdentifier = "Sam Blog" };
 //            context.AiCustomers.Add(aiCustomer);
 //            context.HumanResources.Add(humanResource);
 //            await context.SaveChangesAsync();
@@ -53,4 +53,4 @@
 
 //        response.StatusCode.ShouldBe(HttpStatusCode.Created);
 //    }
-// }
+//}

@@ -8,6 +8,9 @@ namespace SkynetBooking.WebApi.E2eTests;
 
 public class TestBase : IAsyncLifetime
 {
+    internal async Task<int> CreateAiCustomer(AiCustomerOptions? options = null) => await CreateEntity(options ?? new());
+    internal async Task<int> CreateHumanResource(HumanResourceOptions? options = null) => await CreateEntity(options ?? new());
+
     protected readonly CustomWebApplicationFactory Factory;
     protected readonly CustomWebApplicationFixture Fixture;
     protected readonly IServiceProvider Services;
@@ -34,10 +37,6 @@ public class TestBase : IAsyncLifetime
 
         return entity.Id;
     }
-
-    internal async Task<int> CreateAiCustomer(AiCustomerOptions? options = null) => await CreateEntity(options ?? new());
-
-    internal async Task<int> CreateHumanResource(HumanResourceOptions? options = null) => await CreateEntity(options ?? new());
 
     public virtual async Task InitializeAsync() => await Factory.ResetState();
 

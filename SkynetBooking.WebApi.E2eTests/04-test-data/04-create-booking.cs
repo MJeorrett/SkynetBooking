@@ -1,20 +1,20 @@
-// using System.Net;
-// using Microsoft.EntityFrameworkCore;
-// using Shouldly;
-// using SkynetBooking.Core;
-// using SkynetBooking.WebApi.E2eTests.Shared.Dtos.Bookings;
-// using SkynetBooking.WebApi.E2eTests.Shared.Endpoints;
-// using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
+//using System.Net;
+//using Microsoft.EntityFrameworkCore;
+//using Shouldly;
+//using SkynetBooking.Core;
+//using SkynetBooking.WebApi.E2eTests.Shared.Dtos.Bookings;
+//using SkynetBooking.WebApi.E2eTests.Shared.Endpoints;
+//using SkynetBooking.WebApi.E2eTests.Shared.WebApplicationFactory;
 
-// namespace SkynetBooking.WebApi.E2eTests.Bookings;
+//namespace SkynetBooking.WebApi.E2eTests.Bookings;
 
-// [Collection(CustomWebApplicationCollection.Name)]
-// public class Example4_CreateBooking : TestBase
-// {
+//[Collection(CustomWebApplicationCollection.Name)]
+//public class Example4_CreateBooking : TestBase
+//{
 //    public Example4_CreateBooking(CustomWebApplicationFixture fixture) : base(fixture) { }
 
 //    [Fact]
-//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_Before()
+//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_Before_UsingSeeding()
 //    {
 //        const string seededAiCustomerName = "Sir Botsalot";
 
@@ -42,7 +42,7 @@
 //    }
 
 //    [Fact]
-//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_AfterStep1()
+//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_After_ManualSetUp()
 //    {
 //        var db = ResolveDbContext();
 
@@ -53,7 +53,7 @@
 //        };
 //        db.AiCustomers.Add(aiCustomer);
 
-//        var humanResource = new HumanResourceEntity();
+//        var humanResource = new HumanResourceEntity() { NonUniqueIdentifier = "Sam Stevens", MaxPayloadKg = 61 };
 //        db.HumanResources.Add(humanResource);
 
 //        await db.SaveChangesAsync();
@@ -72,7 +72,7 @@
 //    }
 
 //    [Fact]
-//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_AfterStep2()
+//    public async Task Should_CreateBooking_When_AiCustomerAndHumanResourceExist_After_TestData()
 //    {
 //        var aiCustomerId = await CreateAiCustomer();
 //        var humanResourceId = await CreateHumanResource();
@@ -89,4 +89,4 @@
 
 //        response.StatusCode.ShouldBe(HttpStatusCode.Created);
 //    }
-// }
+//}

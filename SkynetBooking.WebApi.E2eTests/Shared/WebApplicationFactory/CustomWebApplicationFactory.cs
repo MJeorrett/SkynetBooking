@@ -21,7 +21,7 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>
 
         await ResetDatabaseAsync(connectionString);
 
-         using var scope = Services.CreateScope();
+        using var scope = Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<SkynetDbContext>();
         await DataSeeder.SeedAsync(context);
     }
